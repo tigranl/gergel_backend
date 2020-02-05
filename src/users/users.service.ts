@@ -2,7 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { UserDto } from './user.dto';
+import { UserDto } from './interfaces/user.dto';
 
 @Injectable()
 export class UsersService {
@@ -22,6 +22,7 @@ export class UsersService {
   }
   public async createUser(newUser: UserDto): Promise<any> {
     const { email } = newUser;
+    console.log(newUser)
     const user = await this.userRepository.findOne({ where: { email } });
     if (user) {
       throw new HttpException(
@@ -29,7 +30,7 @@ export class UsersService {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return this.userRepository.save(user).then(record => ({id: record.id}));
+    return this.userRepository.save(newUser).then(record => ({id: record.id}));
   }
   public async updateUser(id: number, user: UserDto): Promise<any> {
     return await this.userRepository.update(id, user);
