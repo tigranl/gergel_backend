@@ -25,9 +25,8 @@ export class AuthController {
   ) {}
 
   @Post('register')
-  public async register(@Response() res, @Body() createUserDto) {
-    console.log(createUserDto)
-    const result = await this.authService.register(createUserDto);
+  public async register(@Response() res, @Body() user: UserDto) {
+    const result = await this.authService.register(user);
     if (!result.success) {
       return res.status(HttpStatus.BAD_REQUEST).json(result);
     }

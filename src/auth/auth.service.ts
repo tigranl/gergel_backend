@@ -8,10 +8,9 @@ export class AuthService {
   constructor(private readonly usersService: UsersService) {}
 
   async register(user: UserDto) {
-    console.log(user)
     let status: RegistrationStatus = {
       success: true,
-      message: 'user register',
+      message: 'User is registered',
     };
     try {
       await this.usersService.createUser(user);

@@ -22,7 +22,6 @@ export class UsersService {
   }
   public async createUser(newUser: UserDto): Promise<any> {
     const { email } = newUser;
-    console.log(newUser)
     const user = await this.userRepository.findOne({ where: { email } });
     if (user) {
       throw new HttpException(
