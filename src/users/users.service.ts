@@ -22,14 +22,15 @@ export class UsersService {
   }
   public async createUser(newUser: UserDto): Promise<any> {
     const { email } = newUser;
-    const user = await this.userRepository.findOne({ where: { email } });
+    let user = await this.userRepository.findOne({ where: { email } });
     if (user) {
       throw new HttpException(
         'User already exists',
         HttpStatus.BAD_REQUEST,
       );
     }
-    return this.userRepository.save(newUser).then(record => ({id: record.id}));
+    user = await this.userRepository.create(newUser);
+    return this.userRepository.save(user);
   }
   public async updateUser(id: number, user: UserDto): Promise<any> {
     return await this.userRepository.update(id, user);
