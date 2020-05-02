@@ -32,4 +32,10 @@ export class AuthController {
     }
     return res.status(HttpStatus.OK).json(result);
   }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Response() res) {
+    return res.status(HttpStatus.OK).json(await this.authService.login(res.req.user));
+  }
 }

@@ -6,7 +6,6 @@ import {
 } from 'typeorm';
 import {IsEmail} from 'class-validator';
 import * as bcrypt from 'bcrypt';
-import { UserDto } from './interfaces/user.dto';
 
 @Entity()
 export class User {
