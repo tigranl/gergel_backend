@@ -12,7 +12,7 @@ export class ApiService {
 
   getRandomEnglishWords(count: number): Observable<any> {
     return this.httpService.get(RANDOM_WORDS_API_URL + String(count))
-      .pipe(map(data => data.data ));
+      .pipe(map(data => data.data));
   }
 
   async formChoices(sourceLang: string, targetLang: string, query: string): Promise<ResponseDto> {
