@@ -14,7 +14,6 @@ import {
 import { AuthService } from './auth.service';
 import { UsersService } from 'src/users/users.service';
 import { UserDto } from 'src/users/interfaces/user.dto';
-import { LoginUserDto } from '../users/interfaces/login.dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
@@ -35,7 +34,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Response() res) {
+  public async login(@Response() res) {
     return res.status(HttpStatus.OK).json(await this.authService.login(res.req.user));
   }
 }

@@ -29,6 +29,7 @@
     "@types/es6-shim": "^0.31.39",
     "bcrypt": "^3.0.7",
     "class-validator": "^0.11.0",
+    "linguee": "^1.0.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

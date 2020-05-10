@@ -6,15 +6,16 @@ import 'reflect-metadata';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  const options = new DocumentBuilder()
+/*  const options = new DocumentBuilder()
     .setTitle('Yeismo')
     .setDescription('Language learning platform')
     .setVersion('0.1')
     .addTag('lang')
     .build();
-  const document = SwaggerModule.createDocument(app, options);
+ */
+  /*const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
+   */
   await app.listen(3000);
 }
 bootstrap();

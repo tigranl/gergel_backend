@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public async validateUserToken(id: number): Promise<any> {
-    return await this.usersService.getByid(id);
+    return await this.usersService.getById(id);
   }
 
   async login(user: any) {
